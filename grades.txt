@@ -1,6 +1,0 @@
-James Alden,78,58,63,25,96
-Maria Smith,88.5,78,52.5,55,98
-Patrick Klien,45,65,70,72.5,77
-Brian Jones,77.6,78,86,74,57.5
-Mary Jo Laurence,67,89,89,67,66
-Adam Raines,85.1,99,88,75,92
