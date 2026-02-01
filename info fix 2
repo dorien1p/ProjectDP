@@ -1,0 +1,87 @@
+You did a lot right. The key takeaways from your output:
+
+1. **You don’t have CMake installed** (`cmake: command not found`)
+2. Even after adding the Pi repo, **`libraspberrypi-dev` / `libraspberrypi-doc` still do not exist for your setup (Debian 13 + arm64)**
+3. You now have the Pi repo listed **twice**, which is why you’re seeing those “configured multiple times” warnings.
+
+And the big reality check: **omxiv depends on Raspberry Pi’s old OpenMAX stack**, and on **64-bit (aarch64) it’s generally a dead end**. So you’re better off using `fim` (framebuffer) or `feh` (X/desktop), which you already installed.
+
+### What to do now (clean + working)
+
+## A) Clean up the duplicate Raspberry Pi repo entry (remove warnings)
+
+You already have `/etc/apt/sources.list.d/raspi.sources`, so you *don’t* need the extra `.list` you created.
+
+```bash
+sudo rm /etc/apt/sources.list.d/raspberrypi-archive.list
+sudo apt update
+```
+
+That should remove all those “configured multiple times” warnings.
+
+---
+
+## B) Install build tools (CMake + compiler tools)
+
+Even if you end up building other things, you’ll want these:
+
+```bash
+sudo apt install -y cmake build-essential git pkg-config
+```
+
+(Your `pkg-config` is already there, but this makes your build environment complete.)
+
+---
+
+## C) Use an image viewer that works on RetroPie (what you installed)
+
+### If you’re in a console / no desktop:
+
+**fim** (framebuffer viewer)
+
+```bash
+fim /path/to/image.png
+```
+
+Common helpful options:
+
+```bash
+fim -a /path/to/folder      # auto-fit, browse images
+fim -d /path/to/folder      # slideshow
+```
+
+### If you have an X desktop running:
+
+**feh**
+
+```bash
+feh /path/to/image.png
+feh -F /path/to/folder      # fullscreen + browse folder
+```
+
+---
+
+## D) Why `libraspberrypi-dev` won’t install on your system
+
+On your setup (**Debian 13 trixie, arm64**), those packages aren’t provided the way RetroPie’s old scripts expect. RetroPie’s omxiv script is written for environments where those packages exist (historically tied to Raspberry Pi OS / older releases). On modern 64-bit + newer Debian, it’s not available, so `apt` has nothing to install.
+
+---
+
+## E) If you absolutely must use omxiv
+
+Only realistic path:
+
+* **Install a 32-bit OS (armhf) RetroPie / Raspberry Pi OS** (or run a 32-bit userspace), because omxiv/OpenMAX is tied to that old stack.
+
+If your goal is just “display images in RetroPie”, **fim is the clean solution**.
+
+---
+
+### Quick question (so I can give the exact command you’ll use)
+
+When you say “image viewer for RetroPie,” are you trying to:
+
+1. View images **from the terminal** while in EmulationStation / console (no desktop), or
+2. View images **inside an X desktop**?
+
+If you answer with **1 or 2**, I’ll give you the best command + a simple launcher script you can run from RetroPie.
