@@ -1,0 +1,136 @@
+dpz777@DPz:~ $ cmake --version
+bash: cmake: command not found
+dpz777@DPz:~ $ cmake --version
+bash: cmake: command not found
+dpz777@DPz:~ $ pkg-config --version
+1.8.1
+dpz777@DPz:~ $         im in retro pie 4
+bash: im: command not found
+dpz777@DPz:~ $          sudo apt update
+sudo apt install fim
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease     
+Hit:3 http://deb.debian.org/debian-security trixie-security InRelease          
+Hit:4 http://archive.raspberrypi.com/debian trixie InRelease                   
+All packages are up to date.    
+Installing:                     
+  fim
+
+Suggested packages:
+  inkscape
+
+Summary:
+  Upgrading: 0, Installing: 1, Removing: 0, Not Upgrading: 0
+  Download size: 639 kB
+  Space needed: 1,824 kB / 43.5 GB available
+
+Get:1 http://deb.debian.org/debian trixie/main arm64 fim arm64 0.7.1-3 [639 kB]
+Fetched 639 kB in 0s (2,100 kB/s)
+Selecting previously unselected package fim.
+(Reading database ... 187266 files and directories currently installed.)
+Preparing to unpack .../archives/fim_0.7.1-3_arm64.deb ...
+Unpacking fim (0.7.1-3) ...
+Setting up fim (0.7.1-3) ...
+Processing triggers for man-db (2.13.1-1) ...
+dpz777@DPz:~ $ sudo apt update
+sudo apt install feh
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease    
+Hit:3 http://deb.debian.org/debian-security trixie-security InRelease          
+Hit:4 http://archive.raspberrypi.com/debian trixie InRelease                   
+All packages are up to date.    
+Installing:                     
+  feh
+
+Installing dependencies:
+  libjpeg-turbo-progs  yudit-common
+
+Suggested packages:
+  yudit-doc  yudit
+
+Summary:
+  Upgrading: 0, Installing: 3, Removing: 0, Not Upgrading: 0
+  Download size: 2,045 kB
+  Space needed: 11.2 MB / 43.5 GB available
+
+Continue? [Y/n] y
+Get:1 http://deb.debian.org/debian trixie/main arm64 yudit-common all 3.1.0-1 [1,752 kB]
+Get:2 http://deb.debian.org/debian trixie/main arm64 feh arm64 3.10.3-1 [154 kB]
+Get:3 http://deb.debian.org/debian trixie/main arm64 libjpeg-turbo-progs arm64 1:2.1.5-4 [140 kB]
+Fetched 2,045 kB in 1s (3,347 kB/s)          
+Selecting previously unselected package yudit-common.
+(Reading database ... 187293 files and directories currently installed.)
+Preparing to unpack .../yudit-common_3.1.0-1_all.deb ...
+Unpacking yudit-common (3.1.0-1) ...
+Selecting previously unselected package feh.
+Preparing to unpack .../feh_3.10.3-1_arm64.deb ...
+Unpacking feh (3.10.3-1) ...
+Selecting previously unselected package libjpeg-turbo-progs.
+Preparing to unpack .../libjpeg-turbo-progs_1%3a2.1.5-4_arm64.deb ...
+Unpacking libjpeg-turbo-progs (1:2.1.5-4) ...
+Setting up libjpeg-turbo-progs (1:2.1.5-4) ...
+Setting up yudit-common (3.1.0-1) ...
+Setting up feh (3.10.3-1) ...
+Processing triggers for desktop-file-utils (0.28-1) ...
+Processing triggers for hicolor-icon-theme (0.18-2) ...
+Processing triggers for gnome-menus (3.36.0-3) ...
+Processing triggers for man-db (2.13.1-1) ...
+Processing triggers for mailcap (3.74) ...
+dpz777@DPz:~ $ sudo apt update
+sudo apt install raspberrypi-archive-keyring
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease 
+Hit:3 http://deb.debian.org/debian-security trixie-security InRelease          
+Hit:4 http://archive.raspberrypi.com/debian trixie InRelease                   
+All packages are up to date.    
+raspberrypi-archive-keyring is already the newest version (2025.1+rpt1).
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+dpz777@DPz:~ $ sudo apt update
+sudo apt install raspberrypi-archive-keyring
+
+echo "deb [signed-by=/usr/share/keyrings/raspberrypi-archive-keyring.pgp] http://archive.raspberrypi.com/debian/ trixie main" \
+| sudo tee /etc/apt/sources.list.d/raspberrypi-archive.list
+
+sudo apt update
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease
+Hit:3 http://deb.debian.org/debian-security trixie-security InRelease
+Hit:4 http://archive.raspberrypi.com/debian trixie InRelease    
+All packages are up to date.                                
+raspberrypi-archive-keyring is already the newest version (2025.1+rpt1).
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+deb [signed-by=/usr/share/keyrings/raspberrypi-archive-keyring.pgp] http://archive.raspberrypi.com/debian/ trixie main
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease 
+Hit:3 http://deb.debian.org/debian-security trixie-security InRelease          
+Hit:4 http://archive.raspberrypi.com/debian trixie InRelease                   
+All packages are up to date.    
+Warning: Target Packages (main/binary-arm64/Packages) is configured multiple times in /etc/apt/sources.list.d/raspberrypi-archive.list:1 and /etc/apt/sources.list.d/raspi.sources:1
+Warning: Target Packages (main/binary-armhf/Packages) is configured multiple times in /etc/apt/sources.list.d/raspberrypi-archive.list:1 and /etc/apt/sources.list.d/raspi.sources:1
+Warning: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/raspberrypi-archive.list:1 and /etc/apt/sources.list.d/raspi.sources:1
+Warning: Target Translations (main/i18n/Translation-en_GB) is configured multiple times in /etc/apt/sources.list.d/raspberrypi-archive.list:1 and /etc/apt/sources.list.d/raspi.sources:1
+Warning: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/raspberrypi-archive.list:1 and /etc/apt/sources.list.d/raspi.sources:1
+Warning: Target Packages (main/binary-arm64/Packages) is configured multiple times in /etc/apt/sources.list.d/raspberrypi-archive.list:1 and /etc/apt/sources.list.d/raspi.sources:1
+Warning: Target Packages (main/binary-armhf/Packages) is configured multiple times in /etc/apt/sources.list.d/raspberrypi-archive.list:1 and /etc/apt/sources.list.d/raspi.sources:1
+Warning: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/raspberrypi-archive.list:1 and /etc/apt/sources.list.d/raspi.sources:1
+Warning: Target Translations (main/i18n/Translation-en_GB) is configured multiple times in /etc/apt/sources.list.d/raspberrypi-archive.list:1 and /etc/apt/sources.list.d/raspi.sources:1
+Warning: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/raspberrypi-archive.list:1 and /etc/apt/sources.list.d/raspi.sources:1
+dpz777@DPz:~ $ sudo apt install libraspberrypi-dev libraspberrypi-doc libpng-dev libjpeg-dev
+Package libraspberrypi-dev is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+However the following packages replace it:
+  libdtovl0:armhf  libdtovl0
+
+
+Package libraspberrypi-doc is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+However the following packages replace it:
+  libdtovl0:armhf  libdtovl0
+
+
+Error: Package 'libraspberrypi-dev' has no installation candidate
+Error: Package 'libraspberrypi-doc' has no installation candidate
