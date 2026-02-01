@@ -1,0 +1,55 @@
+Got it — on Raspberry Pi 64-bit OS (aarch64), omxiv is basically a no-go in practice, because it relies on the old OpenMAX / libraspberrypi userland that RetroPie’s script expects, and those packages aren’t provided for your setup (that’s exactly why libraspberrypi-dev has “no installation candidate”). So the right move is: use a different viewer (you already installed two good ones), or switch to 32-bit if you truly need omxiv.
+
+Here’s what to do on 64-bit:
+
+1) Remove the duplicate repo entry (fix warnings)
+
+You already have the Pi repo via raspi.sources, so delete the extra file you added:
+
+sudo rm /etc/apt/sources.list.d/raspberrypi-archive.list
+sudo apt update
+
+2) Use a working image viewer on 64-bit
+If you’re in RetroPie / console (no desktop)
+
+Use fim (framebuffer):
+
+fim /path/to/image.png
+
+
+Browse a folder:
+
+fim -a /path/to/folder
+
+If you have a desktop / X11 running
+
+Use feh:
+
+feh /path/to/image.png
+
+
+Fullscreen browse:
+
+feh -F /path/to/folder
+
+3) If you still want to build stuff from source
+
+You’re missing CMake:
+
+sudo apt install -y cmake build-essential git pkg-config
+
+4) If you must have omxiv specifically
+
+Your reliable option is:
+
+Switch to a 32-bit RetroPie / Raspberry Pi OS (armhf)
+
+Because on 64-bit, the required legacy stack isn’t there in the form RetroPie expects.
+
+If you tell me which situation you’re in:
+
+A) you want to view images in terminal / EmulationStation environment, or
+
+B) you want to view images in a desktop,
+
+I’ll give you the clean “best” command setup (and a tiny script) so you can launch it easily from RetroPie.
