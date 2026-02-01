@@ -1,0 +1,31 @@
+Log started at: Sun  1 Feb 11:33:27 EST 2026
+
+RetroPie-Setup version: 4.8.10 (981dd1b)
+System: rpi4 (aarch64) - Debian GNU/Linux 13 (trixie) - Linux DPz 6.12.47+rpt-rpi-v8 #1 SMP PREEMPT Debian 1:6.12.47-1+rpt1 (2025-09-16) aarch64 GNU/Linux
+
+= = = = = = = = = = = = = = = = = = = = =
+Installing dependencies for 'omxiv' : OpenMAX image viewer for the Raspberry Pi
+= = = = = = = = = = = = = = = = = = = = =
+
+Did not find needed dependencies: libraspberrypi-dev libraspberrypi-doc libpng-dev libjpeg-dev. Trying to install them now.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Package libraspberrypi-dev is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+However the following packages replace it:
+  libdtovl0:armhf libdtovl0
+
+Package libraspberrypi-doc is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+However the following packages replace it:
+  libdtovl0:armhf libdtovl0
+
+E: Package 'libraspberrypi-dev' has no installation candidate
+E: Package 'libraspberrypi-doc' has no installation candidate
+Could not install package(s): libraspberrypi-dev libraspberrypi-doc libpng-dev libjpeg-dev.
+
+Log ended at: Sun  1 Feb 11:33:28 EST 2026
+Total running time: 0 hours, 0 mins, 1 secs
