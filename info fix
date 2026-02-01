@@ -1,0 +1,71 @@
+Your log is failing **before it even builds omxiv** because your system can’t find RetroPie’s required packages:
+
+* `libraspberrypi-dev`
+* `libraspberrypi-doc`
+
+On **Debian 13 (trixie) arm64** those packages are **not in the default Debian repos**, so `apt` says *“no installation candidate”*.
+
+### The bigger issue (important)
+
+Even if you fix the repo, **omxiv is deprecated and (per the project) OpenMAX libraries aren’t available for arm64**, meaning it’s generally **not expected to work on your 64-bit setup**. ([GitHub][1])
+
+So you have two realistic paths:
+
+---
+
+## Option 1 (Recommended): Don’t use omxiv on arm64 — use an alternative viewer
+
+If your goal is “show images on RetroPie / Pi”:
+
+**Console / framebuffer style:**
+
+```bash
+sudo apt update
+sudo apt install fim
+```
+
+**If you have X/desktop available:**
+
+```bash
+sudo apt update
+sudo apt install feh
+```
+
+---
+
+## Option 2: Make RetroPie able to install `libraspberrypi-dev` (repo fix)
+
+This addresses the *exact error you posted*, because those packages come from the Raspberry Pi archive repo (which has a trixie suite). ([archive.raspberrypi.org][2])
+
+1. Add the Raspberry Pi archive keyring + repo:
+
+```bash
+sudo apt update
+sudo apt install raspberrypi-archive-keyring
+
+echo "deb [signed-by=/usr/share/keyrings/raspberrypi-archive-keyring.pgp] http://archive.raspberrypi.com/debian/ trixie main" \
+| sudo tee /etc/apt/sources.list.d/raspberrypi-archive.list
+
+sudo apt update
+```
+
+(That `signed-by` path is the one people use on trixie.) ([Raspberry Pi Forums][3])
+
+2. Try installing the missing deps:
+
+```bash
+sudo apt install libraspberrypi-dev libraspberrypi-doc libpng-dev libjpeg-dev
+```
+
+### But expect this next
+
+Even after that, **omxiv will likely still fail on arm64** (or be unusable) because of the OpenMAX/arm64 limitation noted by the omxiv maintainer. ([GitHub][1])
+If you *must* use omxiv specifically, the practical solution is a **32-bit (armhf) RetroPie / Raspberry Pi OS** install.
+
+---
+
+If you want, paste the next build output after you run Option 2 (the first compile error you hit), and I’ll tell you immediately whether it’s fixable on your current 64-bit install or if it’s hitting the OpenMAX wall.
+
+[1]: https://github.com/HaarigerHarald/omxiv?utm_source=chatgpt.com "HaarigerHarald/omxiv: OpenMax image viewer for the ..."
+[2]: https://archive.raspberrypi.org/debian/dists/trixie/?utm_source=chatgpt.com "Index of /debian/dists/trixie"
+[3]: https://forums.raspberrypi.com/viewtopic.php?t=392471&utm_source=chatgpt.com "keyring missing after upgrade 12 to 13"
