@@ -1,0 +1,60 @@
+That log confirms the same root problem: on your **Pi 4 + 64-bit OS (aarch64) + Debian 13 (trixie)**, RetroPie’s `omxiv` install script is trying to pull **legacy Raspberry Pi userland dev packages** that **don’t exist for your system**:
+
+* `libraspberrypi-dev`
+* `libraspberrypi-doc`
+
+So the install **cannot proceed** (it dies at dependency install). The “replacement” it suggests (`libdtovl0:armhf`) is a hint that the stuff it wants lives in the **32-bit (armhf)** world, not your 64-bit one.
+
+### What you can do (pick one)
+
+## 1) Best on 64-bit: stop trying to install omxiv and use a working viewer
+
+You already installed them:
+
+### Console / RetroPie environment (no desktop)
+
+```bash
+fim /path/to/image.png
+fim -a /path/to/folder
+```
+
+### Desktop / X11
+
+```bash
+feh /path/to/image.png
+feh -F /path/to/folder
+```
+
+This is the clean solution on 64-bit.
+
+---
+
+## 2) If you *must* use omxiv: you need 32-bit (armhf)
+
+Realistically:
+
+* install **32-bit RetroPie / Raspberry Pi OS**, **or**
+* run a **32-bit userspace** (advanced + annoying; not worth it for an image viewer)
+
+Because `omxiv` is tied to old OpenMAX + `libraspberrypi` userland, which isn’t supported the way this script expects on modern 64-bit setups.
+
+---
+
+## 3) If you just want RetroPie-Setup to stop erroring on dependencies
+
+You can also **disable / avoid installing omxiv** and use your alternative viewer.
+
+---
+
+### Quick cleanup (you had this earlier)
+
+If you still see “configured multiple times” warnings during `apt update`, run:
+
+```bash
+sudo rm /etc/apt/sources.list.d/raspberrypi-archive.list
+sudo apt update
+```
+
+---
+
+If you tell me *where* you want to view images from (inside EmulationStation? from a shell script? as a screensaver?), I’ll give you the exact command + a simple launcher script using **fim** (console) or **feh** (desktop) that fits your RetroPie workflow.
